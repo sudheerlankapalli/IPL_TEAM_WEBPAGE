@@ -1,0 +1,1710 @@
+search bar---need to change
+players add to butttonn need to change
+scroll images need to change
+font style need to be change
+carts hover /style need to be change
+footer style and names need to be change
+top players background need to be change
+ABOUT BUTTON NEED TO BE ADDED AND IT SHOULD SHOWS SOME INFO ABOUT IPL 20
+In search bar need to change by enter the enter button we can access the concern thing
+lot of changes/styling has be made on css part 
+need to place on the same page after the clicking the operations
+
+
+
+
+CREATE A WEB PAGE USING THE BELOW DETAILS
+Problem Details
+● The frontend application needs to be implemented using HTML, CSS, and
+JavaScript. For data handling use local storage.
+● You have to design the UI for all the web pages as well. There will be marks
+for clear and beautiful UI design.
+● On the homepage show a card-based grid of all the teams. On the team
+card click takes the user to the team details page.
+● Team Details Page will have the following information:
+○ Team Name
+○ Team Icon
+○ Player Count
+○ Top Batsman
+○ Top Bowler
+○ Championship Won Count
+○ Card grid with all the players. The Player card should have the
+following information:
+■ Full Name
+■ Photo
+■ Team
+■ Price
+■ Playing Status - Playing or On-bench
+■ Role - Batsman, Bowler or All-rounder.
+○ Player card click should take to the player details page. The player
+details page will have the same details as the card but with a
+different design.
+
+● From the homepage, users can also search for players from different
+teams by entering a team code. For example - MI(Mumbai Indians),
+RR(Rajasthan Royals), etc. You should return all players present in the local
+storage from the same team searched by the user.
+● The top bar should have a button using which the users can add new
+teams and new players inside the local storage. When a new team/player
+is added, it should be visible on the screen as well.
+● Players’ Data should be in the given format:
+[
+{
+"id": 0,
+"playerName": "Hardik Pandya",
+"from": "MI",
+"price": "6.50 Cr",
+"isPlaying": true,
+"description": "All-rounder"
+},
+{
+"id": 1,
+"playerName": "Virat Kohli",
+"from": "RCB",
+"price": "8.00 Cr",
+"isPlaying": true,
+"description": "Batsman"
+},
+{
+"id": 2,
+"playerName": "Yuvraj Singh",
+"from": "MI",
+"price": "1.00 Cr",
+"isPlaying": false,
+
+"description": "Batsman"
+},
+{
+"id": 3,
+"playerName": "Chris Morris",
+"from": "RR",
+"price": "16.25 Cr",
+"isPlaying": true,
+"description": "All-rounder"
+},
+{
+"id": 4,
+"playerName": "Glenn Maxwell",
+"from": "RCB",
+"price": "14.25",
+"isPlaying": true,
+"description": "All-rounder"
+},
+{
+"id": 5,
+"playerName": "Rohit Sharma",
+"from": "MI",
+"price": "6.50 Cr",
+"isPlaying": true,
+"description": "BatsMan"
+},
+{
+"id": 6,
+"playerName": "Ishan Kishan",
+"from": "MI",
+"price": "2.50 Cr",
+"isPlaying": true,
+"description": "BatsMan"
+}
+
+]
+
+
+
+index----start
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IPL Project</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/6f5013579e.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- Header Section start -->
+    <header>
+      <div id="head-container">
+        <div id="head-right">
+          
+          <img src="./img/IPL- Logo-PNG.png" alt="logo" id="logo" />
+          <a href="index.html">
+            <img src="img/home_icon.png" id="home-button" class="add-button">
+          </a>
+        </div>
+        <div id="head-left">
+          <div class="search-input">
+            <a href="" target="_blank" hidden></a>
+            <input type="text" placeholder="Enter team code ex:- DC" />
+            <div class="autocom-box"></div>
+            <div class="icon"><i class="fas fa-search"></i></div>
+          </div>
+          <button
+            id="add-team-button"
+            class="add-button"
+            onclick="addteamclicked()"
+          >
+            Add Team
+          </button>
+          <button
+            id="add-player-button"
+            class="add-button"
+            onclick="addPlayerClicked()"
+          >
+            Add Player
+          </button>
+ 
+        </div>
+      </div>
+    </header>
+
+    <div class="slider">
+      <div class="slides">
+        <input type="radio" name="radio-btn" id="radio1" />
+        <input type="radio" name="radio-btn" id="radio2" />
+        <input type="radio" name="radio-btn" id="radio3" />
+        <input type="radio" name="radio-btn" id="radio4" />
+
+        <div class="slide">
+          <img src="https://s01.sgp1.cdn.digitaloceanspaces.com/article/170054-tlvnvtqkqm-1644756521.jpg" alt="" />
+        </div>
+        <div class="slide first">
+          <img src="https://static.toiimg.com/photo/msid-90417002/90417002.jpg" alt="" />
+        </div>
+        <div class="slide">
+          <img src="https://newsroom.gy/wp-content/uploads/2018/05/SRH.jpg" alt="" />
+        </div>
+        <div class="slide">
+          <img src="https://cdn.sportslumo.com/wp-content/uploads/2021/04/18170013/RCB-1.jpg" alt="" />
+        </div>
+      </div>
+
+      <div class="navigation-manual">
+        <label for="radio1" class="manual-btn"></label>
+        <label for="radio2" class="manual-btn"></label>
+        <label for="radio3" class="manual-btn"></label>
+        <label for="radio4" class="manual-btn"></label>
+      </div>
+    </div>
+
+    <h1 id="slogan">Indian Premier League 2023</h1>
+
+    <div id="first-main">
+      
+      <div id="container_teams"><span style="font-weight: bold; font-size: 48px;">IPL</span>The IPL is a competitive league, with teams competing for trophies and rankings. Each team has a roster of players that it can call upon during the tournament. The IPL is also known for its spectacular matches and high-quality entertainment. The IPL offers a variety of different spectator experiences, from live matches at stadiums to live streaming services that allow fans to watch games anywhere in the world.
+  
+<br/><br/> <span style="font-weight: bold; font-size: 24px; color: red;"> Mumbai Indians (MI)</span>  Mumbai, the land of a myriad dreams is a melting pot and the Mumbai Indians unit does its best to showcase the same. One of the costliest teams in the IPL, they are owned by Mukesh Ambani's Reliance Industries Limited. Sachin Tendulkar has to be the most iconic figure to play for them. In the initial years, the team possessed solid hitters like Aiden Blizzard, Ambati Rayudu and Rohit Sharma combined with a host of exciting all-rounders like Kieron Pollard, James Franklin, etc and arguably the world's best T20 bowler in Lasith Malinga.
+
+<br/><br/> <span style="font-weight: bold; font-size: 24px; color: red;">  Chennai Super Kings (CSK)</span>  Owned by The India Cements Ltd., Chennai Super Kings have been the most dominating team in the IPL since its inception in 2008. The team's name draws inspiration from the rich tradition of the golden Tamil era that boasted of many great, fearless rulers. The franchise seems to have stuck to its cultural background and have exhibited their talent on the cricketing field as well.
+
+<br/><br/> <span style="font-weight: bold; font-size: 24px; color: red;">  Royal Challengers Bangalore (RCB)</span> Bangalore are a famous franchise in the Indian T20 League that was founded in 2008 by United Spirits and named after the company's liquor brand Royal Challenge. Since its inception, the team has played its home matches at the M. Chinnaswamy Stadium. Notably, they have never won the Indian T20 League but finished runners-up on three occasions between 2009 and 2016. Their lack of success over the years despite the presence of various marquee players has earned them the tag of 'underachievers'. 
+
+<br/><br/> <span style="font-weight: bold; font-size: 24px; color: red;">  Kolkata Knight Riders (KKR)</span>  Owned by Bollywood actors, Shah Rukh Khan, Juhi Chawla and Jai Mehta, Kolkata were on the receiving end for the first three editions of the Indian T20 League. But in 2011, with a new captain in Gautam Gambhir, the side got the best out of its experienced batting line-up. Pacers like Brett Lee provided the perfect bowling stability needed along with a good spin attack in the form of Iqbal Abdulla and Shakib Al Hasan. All-rounders like Yusuf Pathan and Jacques Kallis, with their mammoth experience, gave the team a strong balance.
+
+<br/><br/> <span style="font-weight: bold; font-size: 24px; color: red;"> Delhi Capitals (DC)</span>  Being the capital city of India, it was expected that Delhi would be one of the most successful teams in the Indian T20 League. They have failed to live up to that billing and right now are under immense pressure to step up with the goods. Delhi was one of the eight founding teams of the Indian T20 League. They are owned jointly by the GMR and JSW groups in India. The Delhi-based franchise as of 2020 is being led by youngster Shreyas Iyer who is making a name for himself in the international arena as well. They have one of the best mentors in the form of Ricky Ponting and with his winning mentality, Delhi would be looking to claim their maiden Indian T20 League title.
+
+<br/><br/> <span style="font-weight: bold; font-size: 24px; color: red;"> Gujarat Titans</span>  Gujarat is a franchise cricket team based in Ahmedabad, that will play in the Indian T20 League for the first time starting in the 2022 season. Founded in 2021, the team will play its home matches at the Narendra Modi Stadium in Motera. The franchise is owned
+by CVC Capital Partners. 
+
+<br/><br/> <span style="font-weight: bold; font-size: 24px; color: red;">  Rajasthan Royals (RR)</span>  The Rajasthan franchise began its Indian T20 League journey on a high note, as they clinched the inaugural edition in 2008. Skipper Shane Warne led them successfully, performing the dual role of both, captain as well as coach. The following seasons were comparatively less fruitful, as the team tried to emulate its success in 2008 but repeatedly failed in its attempts. Shane Warne then bid adieu to professional cricket in 2011, playing his last game in the fourth season.
+
+<br/><br/> <span style="font-weight: bold; font-size: 24px; color: red;">Sunrisers Hyderabad (SHR)</span>  Sunrisers Hyderabad is the new name for the franchise from Hyderabad after the previous franchise called Deccan Chargers was terminated in 2012. They are owned by Kalanithi Maran of the Sun TV Network. The line-up remained similar to what was there for the Chargers. However, there was a change in the coaching staff with Tom Moody heading the job while VVS Laxman assuming the role of a mentor.<br/><br/><br/></div>
+    </div>
+    
+
+    <footer>
+      <div class="footer-content">
+        <ul>
+            <li><h3>Teams</h3></li>
+            <li><a href="#">Mumbai Indians</a></li>
+            <li><a href="#">Chennai Super Kings</a></li>
+            <li><a href="#">Royal Challengers Bangalore</a></li>
+            <li><a href="#">Kolkata Knight Riders</a></li>
+            <li><a href="#">+ Many More</a></li>
+        </ul>
+        <ul>
+            <li><h3>About</h3></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Anti Corruption Policy</a></li>
+            <li><a href="#">Anti Doping Policy</a></li>
+            <li><a href="#">Code Of Conduct For Players And Teams Officials</a></li>
+        </ul>
+        <ul> 
+            <li><h3>Contact</h3></li>
+            <li>Contact</li>
+            <li>Sponsorship</li>
+            <li>Privacy Policy</li>
+        </ul>
+      </div>
+      <div id="owner">
+        <p>&copy; Created by Vishal Kumar</p>
+      </div>
+  </footer>
+    <script src="./script.js"></script>
+  </body>
+</html>
+
+index.html---end
+
+ 
+
+
+
+
+script.js---start
+// slider code
+
+var counter = 1;
+setInterval(function () {
+    document.getElementById('radio' + counter).checked = true;
+    counter++;
+    if (counter > 4) {
+        counter = 1;
+    }
+}, 3000);
+
+// slider code ends
+
+// team and player data
+var playerData = [
+    {
+        "id": 0,
+        "playerName": "Hardik Pandya",
+        "from": "GT",
+        "price": "12.50 Cr",
+        "isPlaying": true,
+        "description": "All-rounder",
+        "playerImg": 'https://assets.iplt20.com/ipl/IPLHeadshot2022/2740.png',
+        "playerTeam": "Gujarat Titan"
+    },
+    {
+        "id": 1,
+        "playerName": "Mohammad Shami",
+        "from": "GT",
+        "price": "10.00 Cr",
+        "isPlaying": true,
+        "description": "Bowler",
+        "playerImg": 'https://assets.iplt20.com/ipl/IPLHeadshot2022/94.png',
+        "playerTeam": "Gujarat Titan"
+    },
+    {
+        "id": 2,
+        "playerName": "Shubham Gill",
+        "from": "GT",
+        "price": "10.00 Cr",
+        "isPlaying": false,
+        "description": "Bowler",
+        "playerImg": 'https://assets.iplt20.com/ipl/IPLHeadshot2022/3761.png',
+        "playerTeam": "Gujarat Titan"
+    },
+    {
+        "id": 3,
+        "playerName": "Jayant Yadav",
+        "from": "GT",
+        "price": "2.00 Cr",
+        "isPlaying": true,
+        "description": "All-rounder",
+        "playerImg": 'https://assets.iplt20.com/ipl/IPLHeadshot2022/1740.png',
+        "playerTeam": "Gujarat Titan"
+    },
+    {
+        "id": 4,
+        "playerName": "Rashid Khan",
+        "from": "GT",
+        "price": "1.30 Cr",
+        "isPlaying": true,
+        "description": "Bowler",
+        "playerImg": 'https://assets.iplt20.com/ipl/IPLHeadshot2022/2885.png',
+        "playerTeam": "Gujarat Titan"
+    },
+    {
+        "id": 5,
+        "playerName": "Virat Kohli",
+        "from": "RCB",
+        "price": "13.00 Cr",
+        "isPlaying": true,
+        "description": "Batsman",
+        "playerImg": 'https://assets.iplt20.com/ipl/IPLHeadshot2022/164.png',
+        "playerTeam": "Royal Challengers Bangalore"
+    },
+    {
+        "id": 6,
+        "playerName": "Glenn Maxwell",
+        "from": "RCB",
+        "price": "10.25 Cr",
+        "isPlaying": true,
+        "description": "All-rounder",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/282.png",
+        "playerTeam": "Royal Challengers Bangalore"
+    },
+    {
+        "id": 7,
+        "playerName": "Shahbaz Ahmed",
+        "from": "RCB",
+        "price": "1.00cr",
+        "isPlaying": true,
+        "description": "Batsman",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/13803.png",
+        "playerTeam": "Royal Challengers Bangalore"
+    },
+    {
+        "id": 8,
+        "playerName": "Mohhamad Siraj",
+        "from": "RCB",
+        "price": "5.00cr",
+        "isPlaying": true,
+        "description": "Batsman",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/3840.png",
+        "playerTeam": "Royal Challengers Bangalore"
+    },
+    {
+        "id": 9,
+        "playerName": "Dinesh Kartik",
+        "from": "RCB",
+        "price": "3.00cr",
+        "isPlaying": true,
+        "description": "Bowler",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/102.png",
+        "playerTeam": "Royal Challengers Bangalore"
+    },
+    {
+        "id": 10,
+        "playerName": "Rohit Sharma",
+        "from": "MI",
+        "price": "14.50 Cr",
+        "isPlaying": true,
+        "description": "Batsman",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/107.png",
+        "playerTeam": "Mumbai Indians"
+    },
+    {
+        "id": 11,
+        "playerName": "Ishan Kishan",
+        "from": "MI",
+        "price": "17.50 Cr",
+        "isPlaying": true,
+        "description": "Batsman",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/2975.png",
+        "playerTeam": "Mumbai Indians"
+    },
+    {
+        "id": 12,
+        "playerName": "Jasprit Bumrah",
+        "from": "MI",
+        "price": "7.50 Cr",
+        "isPlaying": true,
+        "description": "Bowler",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/1124.png",
+        "playerTeam": "Mumbai Indians"
+    },
+    {
+        "id": 13,
+        "playerName": "Mayank Markande",
+        "from": "MI",
+        "price": "1.50 Cr",
+        "isPlaying": true,
+        "description": "Batsman",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/4951.png",
+        "playerTeam": "Mumbai Indians"
+    },
+    {
+        "id": 14,
+        "playerName": "Rahul Budhhi",
+        "from": "MI",
+        "price": "5.00 Cr",
+        "isPlaying": true,
+        "description": "bowler",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/20597.png",
+        "playerTeam": "Mumbai Indians"
+    },
+    {
+        "id": 15,
+        "playerName": "MS Dhoni",
+        "from": "CSK",
+        "price": "14.50 Cr",
+        "isPlaying": true,
+        "description": "Batsman",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/1.png",
+        "playerTeam": "Chennai Super Kings"
+    },
+    {
+        "id": 16,
+        "playerName": "Dwayne Bravo",
+        "from": "CSK",
+        "price": "07.50 Cr",
+        "isPlaying": true,
+        "description": "All-rounder",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/25.png",
+        "playerTeam": "Chennai Super Kings"
+    },
+    {
+        "id": 17,
+        "playerName": "Robin Uthappa",
+        "from": "CSK",
+        "price": "02.50 Cr",
+        "isPlaying": true,
+        "description": "All-rounder",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/127.png",
+        "playerTeam": "Chennai Super Kings"
+    },
+    {
+        "id": 18,
+        "playerName": "Ambati Raydu",
+        "from": "CSK",
+        "price": "01.00 Cr",
+        "isPlaying": true,
+        "description": "Batsman",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/100.png",
+        "playerTeam": "Chennai Super Kings"
+    },
+    {
+        "id": 19,
+        "playerName": "Shivam Dube",
+        "from": "CSK",
+        "price": "07.50 Cr",
+        "isPlaying": true,
+        "description": "Bowler",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/5431.png",
+        "playerTeam": "Chennai Super Kings"
+    },
+
+    {
+        "id": 20,
+        "playerName": "Rishabh Pant",
+        "from": "DC",
+        "price": "13.50 Cr",
+        "isPlaying": true,
+        "description": "Batsman",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/2972.png",
+        "playerTeam": "Delhi Capitals"
+    },
+    {
+        "id": 21,
+        "playerName": "Mandeep Singh",
+        "from": "DC",
+        "price": "1.50 Cr",
+        "isPlaying": true,
+        "description": "Batsman",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/72.png",
+        "playerTeam": "Delhi Capitals"
+    },
+    {
+        "id": 22,
+        "playerName": "Lalit Yadav",
+        "from": "DC",
+        "price": "1.50 Cr",
+        "isPlaying": true,
+        "description": "Bowler",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/6870.png",
+        "playerTeam": "Delhi Capitals"
+    },
+    {
+        "id": 23,
+        "playerName": "Prithvi shaw",
+        "from": "DC",
+        "price": "18.50 Cr",
+        "isPlaying": true,
+        "description": "Batsman",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/3764.png",
+        "playerTeam": "Delhi Capitals"
+    },
+   
+    {
+        "id": 24,
+        "playerName": "Jos Buttler",
+        "from": "RR",
+        "price": "07.50 Cr",
+        "isPlaying": true,
+        "description": "Bowler",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/509.png",
+        "playerTeam": "Rajasthan Royals"
+    },
+    {
+        "id": 25,
+        "playerName": "Karun Nair",
+        "from": "RR",
+        "price": "01.50 Cr",
+        "isPlaying": true,
+        "description": "Bowler",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/276.png",
+        "playerTeam": "Rajasthan Royals"
+    },
+    {
+        "id": 26,
+        "playerName": "Dhruv Jurel",
+        "from": "RR",
+        "price": "07.50 Cr",
+        "isPlaying": true,
+        "description": "Batsman",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/20620.png",
+        "playerTeam": "Rajasthan Royals"
+    },
+    {
+        "id": 27,
+        "playerName": "Riyan Parag",
+        "from": "RR",
+        "price": "03.50 Cr",
+        "isPlaying": true,
+        "description": "Bowler",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/4445.png",
+        "playerTeam": "Rajasthan Royals"
+    },
+    {
+        "id": 28,
+        "playerName": "Devdutt Paddikal",
+        "from": "RR",
+        "price": "07.50 Cr",
+        "isPlaying": true,
+        "description": "Bowler",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/5430.png",
+        "playerTeam": "Rajasthan Royals"
+    },
+    {
+        "id": 29,
+        "playerName": "Shreyas Iyer",
+        "from": "KKR",
+        "price": "10.50 Cr",
+        "isPlaying": true,
+        "description": "Batsman",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/1563.png",
+        "playerTeam": "Kolkata Knight Riders"
+    },
+    {
+        "id": 30,
+        "playerName": "Abhijeet Tomar",
+        "from": "KKR",
+        "price": "18.50 Cr",
+        "isPlaying": false,
+        "description": "Batsman",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/20580.png",
+        "playerTeam": "Kolkata Knight Riders"
+    },
+    {
+        "id": 31,
+        "playerName": "Pat Cummins",
+        "from": "KKR",
+        "price": "1.50 Cr",
+        "isPlaying": true,
+        "description": "Bowler",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/488.png",
+        "playerTeam": "Kolkata Knight Riders"
+    },
+    {
+        "id": 32,
+        "playerName": "Ashok Sharma",
+        "from": "KKR",
+        "price": "18 Cr",
+        "isPlaying": true,
+        "description": "Batsman",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/20584.png",
+        "playerTeam": "Kolkata Knight Riders"
+    },
+    {
+        "id": 33,
+        "playerName": "Rinku Singh",
+        "from": "KKR",
+        "price": "10.50 Cr",
+        "isPlaying": true,
+        "description": "All-rounder",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/3830.png",
+        "playerTeam": "Kolkata Knight Riders"
+    },
+    {
+        "id": 34,
+        "playerName": "Rahul Tripathi",
+        "from": "SH",
+        "price": "10.50 Cr",
+        "isPlaying": true,
+        "description": "All-rounder",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/3838.png",
+        "playerTeam": "Sunrises Hyderabad"
+    },
+    {
+        "id": 35,
+        "playerName": "Anukul Sharma",
+        "from": "SH",
+        "price": "10.50 Cr",
+        "isPlaying": true,
+        "description": "Batsman",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/3760.png",
+        "playerTeam": "Sunrises Hyderabad"
+    },
+    {
+        "id": 36,
+        "playerName": "Abdul Samad",
+        "from": "SH",
+        "price": "5.50 Cr",
+        "isPlaying": true,
+        "description": "Bowler",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/19352.png",
+        "playerTeam": "Sunrises Hyderabad"
+    },
+    {
+        "id": 37,
+        "playerName": "Nicolas Pooran",
+        "from": "SH",
+        "price": "3.50 Cr",
+        "isPlaying": false,
+        "description": "All-rounder",
+        "playerImg": "https://assets.iplt20.com/ipl/IPLHeadshot2022/1703.png",
+        "playerTeam": "Sunrises Hyderabad"
+    },
+   
+
+];
+
+var teamData = [
+
+    {
+        "id": 0,
+        "teamFullName": "Mumbai Indians",
+        "sName": "MI",
+        "fullSname":"MI (Mumbai Indians)" ,
+        "teamIcon": "https://bcciplayerimages.s3.ap-south-1.amazonaws.com/ipl/MI/Logos/Roundbig/MIroundbig.png",
+        "WonCount": 5,
+    },
+    {
+        "id": 1,
+        "teamFullName": "Chennai Super Kings",
+        "sName": "CSK",
+        "fullSname":"CSK (Chennai Super King)" ,
+        "teamIcon": "https://bcciplayerimages.s3.ap-south-1.amazonaws.com/ipl/CSK/logos/Roundbig/CSKroundbig.png",
+        "WonCount": 4,
+    },
+    {
+        "id": 2,
+        "teamFullName": "Royal Challengers Bangalore",
+        "sName": "RCB",
+        "fullSname":"RCB (Royal challengers Bangalore)" ,
+        "teamIcon": "https://bcciplayerimages.s3.ap-south-1.amazonaws.com/ipl/RCB/Logos/Roundbig/RCBroundbig.png",
+        "WonCount": 0,
+    },
+    {
+        "id": 3,
+        "teamFullName": "Kolkata Knight Riders",
+        "sName": "KKR",
+        "fullSname":"KKR (Kolkata Knight Riders)" ,
+        "teamIcon": "https://bcciplayerimages.s3.ap-south-1.amazonaws.com/ipl/KKR/Logos/Roundbig/KKRroundbig.png",
+        "WonCount": 2,
+    },
+    {
+        "id": 4,
+        "teamFullName": "Delhi Capitals",
+        "sName": "DC",
+        "fullSname":"DC (Delhi Capitals)" ,
+        "teamIcon": "https://bcciplayerimages.s3.ap-south-1.amazonaws.com/ipl/DC/Logos/Roundbig/DCroundbig.png",
+        "WonCount": 2,
+    },
+    {
+        "id": 5,
+        "teamFullName": "Gujarat Titan",
+        "sName": "GT",
+        "fullSname":"GT (Gujarat Tistan)" ,
+        "teamIcon": "https://bcciplayerimages.s3.ap-south-1.amazonaws.com/ipl/GT/Logos/Roundbig/GTroundbig.png",
+        "WonCount": 2,
+    },
+
+    {
+        "id": 6,
+        "teamFullName": "Rajasthan Royals",
+        "sName": "RR",
+        "fullSname":"RR (Rajasthan Royals)" ,
+        "teamIcon": "https://bcciplayerimages.s3.ap-south-1.amazonaws.com/ipl/RR/Logos/Roundbig/RRroundbig.png",
+        "WonCount": 1,
+    },
+    {
+        "id": 7,
+        "teamFullName": "Sunrises Hyderabad",
+        "sName": "SH",
+        "fullSname":"SH (Sunrises Hyderabad)" ,
+        "teamIcon": "https://bcciplayerimages.s3.ap-south-1.amazonaws.com/ipl/SRH/Logos/Roundbig/SRHroundbig.png",
+        "WonCount": 1,
+    },
+
+
+];
+
+
+
+var addteamclicked=()=>{
+    window.open("./addTeam.html","_self")
+}
+var addPlayerClicked=()=>{
+    window.open("./addPlayer.html","_self")
+}
+
+
+
+
+
+    let detailofTeam = [];
+    let detailOfPlayer = [];
+    var teamGrid = document.getElementById("container_teams")
+    
+    if(localStorage.getItem("teamArray") === null)
+    localStorage.setItem("teamArray", JSON.stringify(teamData));
+    
+    if(localStorage.getItem("playerArray") === null)
+    localStorage.setItem("playerArray", JSON.stringify(playerData));
+
+    detailofTeam = JSON.parse(localStorage.getItem("teamArray"));
+    detailOfPlayer = JSON.parse(localStorage.getItem("playerArray"));
+
+   
+
+
+   
+// search bar code goes here
+
+var suggestArray=[];
+for(var i=0;i<detailofTeam.length;i++){
+    suggestArray.push(detailofTeam[i].sName)
+    
+}
+let searchBar = document.querySelector(".search-input");
+let inputBox = searchBar.querySelector("input");
+let suggBox = searchBar.querySelector(".autocom-box");
+let icon = searchBar.querySelector(".icon");
+
+
+
+inputBox.onkeyup = (e)=>{
+    if(e.keyCode==13){
+        icon.click()
+    }
+    let userData = e.target.value; 
+    let emptyArray = [];
+    if(userData){
+      
+        emptyArray = suggestArray.filter((data)=>{
+           
+            return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
+        });
+        emptyArray = emptyArray.map((data)=>{
+           
+            return data = `<li>${data}</li>`;
+        });
+        searchBar.classList.add("active"); 
+        showSuggestions(emptyArray);
+        let allList = suggBox.querySelectorAll("li");
+        for (let i = 0; i < allList.length; i++) {
+            
+            allList[i].setAttribute("onclick", "currentLi(this)");
+        }
+    }else{
+        searchBar.classList.remove("active");
+    }
+}
+function currentLi(element){
+    let selectData = element.textContent;
+    inputBox.value = selectData;
+    icon.onclick = ()=>{
+   
+        window.open(`./teams.html?name=${element.textContent}`,"_self")
+    
+    }
+    searchBar.classList.remove("active");
+}
+function showSuggestions(list){
+    let listData;
+    if(!list.length){
+        userValue = inputBox.value;
+        listData = `<li>${userValue}</li>`;
+    }else{
+      listData = list.join('');
+    }
+    suggBox.innerHTML = listData;
+}
+
+// search bar code ends here
+
+// grid cards for teams goes here
+
+var teamMainBox=document.getElementById("container_teams")
+for(var i=0;i<detailofTeam.length;i++){
+teamMainBox.innerHTML+=`
+<div    onclick="makethisinclick('${i}')"    class="minibox">
+
+<img src="${detailofTeam[i].teamIcon}" class="mainimage" alt=""/> 
+<div class="dataodcard">
+
+  <p class="text1"> ${detailofTeam[i].teamFullName}   </p>
+  <p class="text2"> Won Count : ${detailofTeam[i].WonCount} </p>
+ 
+</div>
+
+</div>
+
+`
+
+}
+
+function makethisinclick(res){
+    var clickedCard=detailofTeam[res].sName
+    
+    window.open(`./teams.html?name=${clickedCard}`,"_self")
+    
+    
+}
+
+
+
+style.css---start
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#logo {
+  margin: 5px;
+  margin-left: 5px;
+  width: 100px;
+  height: 60px;
+}
+#head-container,
+#head-left {
+  display: flex;
+}
+#head-container {
+  margin-top: -50px;
+  width: 100%;
+  box-shadow: 2px 4px 2px rgba(9, 9, 9, 0.5);
+  position: fixed;
+  height: 85px;
+  background-color: #f2f4f3;
+}
+#head-con2 {
+  margin-top: -100px;
+  width: 100%;
+  box-shadow: 2px 4px 2px rgb(17 16 16 / 50%);
+  position: fixed;
+  height: 70px;
+  background-color: #0beed7;
+}
+
+#head-con3 {
+  margin-top: -70px;
+  width: 100%;
+  box-shadow: 2px 4px 2px rgb(17 16 16 / 50%);
+  position: fixed;
+  height: 70px;
+  background-color: #0beed7;
+}
+#head-right {
+  display: flex;
+  width: 55%;
+  margin: 5px;
+  margin-left: 50px;
+  height: 60px;
+}
+#head-left {
+  width: 45%;
+}
+#home-button {
+  margin-top: 15px;
+  width: 10%;
+  margin-left: 2%;
+  height: 50px;
+  width: 80px;
+  background-color: rgb(241, 240, 240);
+  border: 10px;
+
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  margin-left: 50px;
+}
+#home-button:hover {
+  background-color:#234E70;
+  box-shadow: 1px 1px 5px #234E70, -0.1px -0.1px 10px rgb(193, 255, 60);
+}
+.add-button {
+  cursor: pointer;
+  background-color: #0084ff;
+  border: 0px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 0px 20px;
+  margin: 10px;
+}
+.add-button:hover {
+  background-color:#234E70 ;
+  box-shadow: 1px 1px 5px #234E70, -0.1px -0.1px 10px rgb(193, 255, 60);
+}
+
+.search-input {
+  margin-top: 20px;
+  margin-right: 10px;
+  background: #fff;
+  width: 55%;
+  border-radius: 5px;
+  position: relative;
+  height: 48px;
+  box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
+}
+.search-input input {
+  height: 48px;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 0 60px 0 20px;
+  font-size: 18px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+}
+.search-input.active input {
+  border-radius: 5px 5px 0 0;
+}
+.search-input .autocom-box {
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+  max-height: 280px;
+}
+.search-input.active .autocom-box {
+  padding: 10px 8px;
+  opacity: 1;
+  pointer-events: auto;
+}
+.autocom-box li {
+  list-style: none;
+  padding: 8px 12px;
+  display: none;
+  width: 100%;
+  cursor: default;
+  border-radius: 3px;
+}
+.search-input.active .autocom-box li {
+  display: block;
+  background-color: white;
+  box-shadow: 1px 1px 2px gray;
+}
+.autocom-box li:hover {
+  background: #efefef;
+}
+.search-input .icon {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 55px;
+  font-size: 20px;
+  color:#234E70;
+  cursor: pointer;
+}
+
+/* image slider start here */
+
+.slider {
+  margin-top: 50px !important;
+  padding-top: 20px;
+  z-index: -1;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slides {
+  width: 500%;
+  display: flex;
+}
+
+.slides input {
+  display: none;
+}
+
+.slide {
+  width: 20%;
+  transition: 0.5s;
+  height: 400px;
+  object-fit: cover;
+}
+
+.slide img {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/*css for manual slide navigation*/
+
+.navigation-manual {
+  position: absolute;
+  width: 100%;
+  margin-top: 0.8vw;
+  display: flex;
+  justify-content: center;
+}
+
+.manual-btn {
+  border: 2px solid rgb(2, 2, 2);
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.5s;
+  opacity: 0.1;
+}
+
+.manual-btn:not(:last-child) {
+  margin-right: 40px;
+}
+
+.manual-btn:hover {
+  background: rgb(1, 1, 1);
+}
+
+#radio1:checked ~ .first {
+  margin-left: 0;
+}
+
+#radio2:checked ~ .first {
+  margin-left: -20%;
+}
+
+#radio3:checked ~ .first {
+  margin-left: -40%;
+}
+
+#radio4:checked ~ .first {
+  margin-left: -60%;
+}
+
+/*css for automatic navigation*/
+
+.navigation-auto {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 27vw;
+}
+
+.navigation-auto div {
+  border: 2px solid gray;
+  padding: 5px;
+  border-radius: 10px;
+  transition: 0.5s;
+  color: red;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.navigation-auto div:not(:last-child) {
+  margin-right: 40px;
+}
+
+#radio1:checked ~ .navigation-auto .auto-btn1 {
+  background: gray;
+}
+
+#radio2:checked ~ .navigation-auto .auto-btn2 {
+  background: gray;
+}
+
+#radio3:checked ~ .navigation-auto .auto-btn3 {
+  background: gray;
+}
+
+#radio4:checked ~ .navigation-auto .auto-btn4 {
+  background: gray;
+}
+.slides input {
+  height: 20px;
+  width: 20px;
+}
+.navigation-auto div {
+  height: -2px;
+}
+
+/* image slider end here */
+
+/* card grid goes here */
+#container_teams {
+  background-color: rgb(215, 234, 249);
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  padding: 50px 10%;
+  font-size: medium;
+  line-height: 1.8;
+}
+.minibox {
+  width: 23.2%;
+  margin: 10px;
+}
+.minibox {
+  margin-bottom: 60px;
+
+  color:white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 370px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 10px 0px;
+  background-image: linear-gradient(to top, #13f1fc, #0470dc);
+  border-radius: 5px;
+}
+ 
+.minibox:hover {
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 10px 5px;
+  margin-top: 3px !important;
+  background-image: linear-gradient(#001f3f, #001f3f);
+  transition: 0.2s ease-in-out;
+}
+.mainimage {
+  width: 75%;
+}
+#first-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+#table-team td {
+  border: 1px solid rgb(252, 253, 255);
+  width: 30vw;
+  padding-left: 10vw;
+}
+ 
+#table-team table {
+  margin-left: 20vw;
+}
+.team-page-icon {
+  width: 100px;
+}
+#player-details-con {
+  /* display: flex; */
+  width: 66%;
+  height: 82vh;
+  justify-content: center;
+  align-items: center;
+}
+
+#new-player-det td {
+  border: 1px solid black;
+  width: 30vw;
+  padding-left: 10vw;
+  background-color: #027166;
+}
+
+#player_detail-img img {
+  width: 35%;
+  margin: 5px 0 -5px 0;
+  margin-left: 19vw;
+}
+#player-details-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#add-team {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+#addteamform {
+  background-color: #234E70;
+  border-radius: 20px;
+  margin: 60px 0px;
+  width: 60%;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0 60px 0;
+}
+#addteamform p {
+  font-size: 24px;
+  padding: 20px 0 5px 0;
+  font-weight: 500;
+  color: white;
+}
+#addteamform input {
+  width: 70%;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+}
+#addteamform select {
+  width: 70%;
+  height: 40px;
+}
+
+#addteamform button {
+  display: block;
+  font-size: 16px;
+  margin-top: 50px;
+  font-weight: 600;
+  color: #fff;
+  padding: 16px 32px;
+  letter-spacing: 2px;
+  background-color: #027166;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#addteamform button:hover {
+  box-shadow: 0 2px 10px rgb(0 1 0 / 50%);
+}
+#slogan {
+  justify-content: center;
+  display: flex;
+  color: white;
+  padding: 20px 0;
+  width: 100%;
+  background-color:rgba(117, 112, 117, 0.692);
+}
+ 
+#slogan2 {
+  color:white;
+  justify-content: center;
+  display: flex;
+  margin-top: -30px;
+  padding: 20px 0;
+  width: 100%;
+  background-color:rgba(117, 112, 117, 0.692);
+}
+#slogan3 {
+  justify-content: center;
+  display: flex;
+  margin-top: 70px;
+  padding: 20px 0;
+  width: 100%;
+  color: white;
+  background-color: rgba(117, 112, 117, 0.692);
+}
+#slogan4 {
+  justify-content: center;
+  display: flex;
+  margin-top: 70px;
+  padding: 20px 0;
+  width: 100%;
+  color: white;
+  background-color: rgba(117, 112, 117, 0.692);
+}
+#head-con4 {
+  margin-top: -70px;
+  width: 100%;
+  box-shadow: 2px 4px 2px rgb(17 16 16 / 50%);
+  position: fixed;
+  height: 70px;
+  background-color: #0beed7;
+}
+
+.dataodcard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  margin: 10px 50px;
+  width: 100%;
+  color: white;
+  background-color:#234E70;
+}
+ 
+#table-team {
+  width: 100%;
+  border: 1px solid black;
+  background-color: rgb(215, 234, 249);
+    
+}
+#table-team table {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  background: url("https://images.pexels.com/photos/110854/pexels-photo-110854.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-size: cover;
+}
+  
+#table-team td {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+}
+.player-detail td {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  background-color: #0a3a6b;
+  color: white;
+  
+}
+.player-detail {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 20px;
+  background-color:rgb(215, 234, 249);
+}
+#inp3, #inp4, #inp6{
+  border-radius: 5px;
+}
+
+/*---- footer---*/
+.footer-content {
+  background-color: black;
+  height: 200px;
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.footer-content ul li {
+  list-style: none;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+.footer-content ul li a,
+.footer-content ul li {
+  text-decoration: none;
+  color: #b8b8b8;
+  font-size: 12px;
+}
+.footer-content ul li a:hover,
+.footer-content ul li:hover {
+  color: #009688;
+}
+.footer-content ul li h3 {
+  text-decoration: none;
+  color: #dcdcdc;
+  font-size: 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+#owner{
+  color: #fff;
+  position: relative;
+  top: -30px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+style.css---end
+
+
+
+addplayer.html--start
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Player</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script
+      src="https://kit.fontawesome.com/6f5013579e.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+        <div id="head-con2">
+            <div id="head-right">
+                <img src="./img/IPL- Logo-PNG.png">
+               <a href="./index.html"><img src="img/home_icon.png" id="home-button" class="add-button"></a>
+            </div>
+
+        </div>
+    </header>
+
+
+    <div id="add-team">
+       <h1 id="slogan2">Add a Player</h1>
+        <form id="addteamform">
+            <p>Player Name</p>
+            <input id="inp1" type="text" name="playerName" placeholder="Enter player name here.." required>
+            <p>Price in Crore</p>
+            <input id="inp2" type="number" name="price" maxlength="2" placeholder="enter price for player.." required>
+            <p>Select Player playing</p>
+            <select id="inp3" type="text" name="Current Status" required> 
+                <option value="true">true</option>    
+                <option value="false">false</option>    
+            </select>
+            <p>Select Player Role</p>
+            <select id="inp4" type="text" name="role" required>
+                <option value="ALL-Rounder">ALL-Rounder</option>
+                <option value="Batsman">Batsman</option>
+                <option value="Bowler">Bowler</option>
+                <option value="Bowler">Wicket-Keeper</option>
+                </select>
+            <p>Player Image URL</p>
+            <input id="inp5" type="text" name="playerimg" placeholder="Enter player image url.." required>
+            <p>Enter Player Team</p>
+            <select id="inp6" type="text" name="teamSelect" required>
+
+
+            </select>
+
+            <button type="submit">Add Player</button>
+        </form>
+
+    </div>
+    <footer>
+        <div class="footer-content">
+          <ul>
+              <li><h3>Teams</h3></li>
+              <li><a href="#">Mumbai Indians</a></li>
+              <li><a href="#">Chennai Super Kings</a></li>
+              <li><a href="#">Royal Challengers Bangalore</a></li>
+              <li><a href="#">Kolkata Knight Riders</a></li>
+              <li><a href="#">+ Many More</a></li>
+          </ul>
+          <ul>
+              <li><h3>About</h3></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Anti Corruption Policy</a></li>
+              <li><a href="#">Anti Doping Policy</a></li>
+              <li><a href="#">Code Of Conduct For Players And Teams Officials</a></li>
+          </ul>
+          <ul> 
+              <li><h3>Contact</h3></li>
+              <li>Contact</li>
+              <li>Sponsorship</li>
+              <li>Privacy Policy</li>
+          </ul>
+        </div>
+        <div id="owner">
+          <p>&copy; Created by Vishal Kumar</p>
+        </div>
+    </footer>
+    <script src="./addPlayer.js">
+
+
+
+    </script>
+  </body>
+</html>
+
+addplayer.html--end
+
+
+
+addplayer.js---start
+
+let localTeam = JSON.parse(localStorage.getItem("teamArray"));
+let localPlayers = JSON.parse(localStorage.getItem("playerArray"));
+
+var selectTeam=document.getElementById("inp6")
+for(var i=0;i<localTeam.length;i++){
+    selectTeam.innerHTML+=`
+    <option value="${localTeam[i].teamFullName}">${localTeam[i].teamFullName}</option>
+               
+    `
+}
+var newData=10
+$("#addteamform").submit(function (e) {
+    e.preventDefault();
+    let inp_val = $("#inp6").val();
+    let shortName = '';
+    for(let i=0;i<inp_val.length;i++){
+        if(i == 0){
+            shortName += inp_val[i++].toUpperCase();
+            continue;
+        }else if(inp_val[i] == ' '){
+            shortName += inp_val[++i].toUpperCase();
+            i++;
+        }
+    }
+    var trueOrFal=""
+    if($("#inp3").val()=="true"){
+        trueOrFal=true
+    }
+    else{
+        trueOrFal=false
+    }
+
+    let addPlayer={
+        "id":localPlayers.length,
+        "playerName": $("#inp1").val(),
+        "from": shortName,
+        "price": $("#inp2").val()+"Cr",
+        "isPlaying": trueOrFal,
+        "description":  $("#inp4").val(),
+        "playerImg":  $("#inp5").val(),
+        "playerTeam":  $("#inp6").val(),
+
+
+    }
+
+    localPlayers.push(addPlayer)
+    localStorage.setItem('playerArray',JSON.stringify(localPlayers))
+
+    location.href = "index.html";
+})
+
+addplayer.js---end
+
+addteam.html--start
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Team</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script
+      src="https://kit.fontawesome.com/6f5013579e.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <div id="head-con2">
+        <div id="head-right">
+          <img
+            src="./img/IPL- Logo-PNG.png"
+            alt="logo here"
+            id="logo"
+          />
+          <a href="./index.html">
+            <img src="img/home_icon.png" id="home-button" class="add-button"></a
+          >
+        </div>
+      </div>
+    </header>
+
+    <div id="add-team">
+      <h1 id="slogan2">Add a Team</h1>
+      <form id="addteamform">
+        <p>Team Name</p>
+        <input
+          id="inp1"
+          type="text"
+          name="teamName"
+          placeholder="Enter team name here.."
+          required
+        />
+        <p>Team logo Url</p>
+        <input
+          id="inp3"
+          type="text"
+          name="logoUrl"
+          placeholder="Enter logo URL here.."
+          required
+        />
+        <p>Won count</p>
+        <input
+          id="inp4"
+          type="number"
+          name="wonCount"
+          maxlength="1"
+          placeholder="Enter won count here.."
+          required
+        />
+
+        <button type="submit">Add team</button>
+      </form>
+    </div>
+     
+    <footer>
+      <div class="footer-content">
+        <ul>
+            <li><h3>Teams</h3></li>
+            <li><a href="#">Mumbai Indians</a></li>
+            <li><a href="#">Chennai Super Kings</a></li>
+            <li><a href="#">Royal Challengers Bangalore</a></li>
+            <li><a href="#">Kolkata Knight Riders</a></li>
+            <li><a href="#">+ Many More</a></li>
+        </ul>
+        <ul>
+            <li><h3>About</h3></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Anti Corruption Policy</a></li>
+            <li><a href="#">Anti Doping Policy</a></li>
+            <li><a href="#">Code Of Conduct For Players And Teams Officials</a></li>
+        </ul>
+        <ul> 
+            <li><h3>Contact</h3></li>
+            <li>Contact</li>
+            <li>Sponsorship</li>
+            <li>Privacy Policy</li>
+        </ul>
+      </div>
+      <div id="owner">
+        <p>&copy; Created by Vishal Kumar</p>
+      </div>
+  </footer>
+    <script src="./addteam.js"></script>
+  </body>
+</html>
+
+addteam.html--end
+
+
+addteam.js-start
+let localTeam = JSON.parse(localStorage.getItem("teamArray"));
+let localPlayers = JSON.parse(localStorage.getItem("playerArray"));
+
+$("#addteamform").submit(function (e) {
+
+
+    e.preventDefault();
+
+
+    let inp_val = $("#inp1").val();
+    let shortName = '';
+    for(let i=0;i<inp_val.length;i++){
+        if(i == 0){
+            shortName += inp_val[i++].toUpperCase();
+            continue;
+        }else if(inp_val[i] == ' '){
+            shortName += inp_val[++i].toUpperCase();
+            i++;
+        }
+    }
+
+    let addData = {
+        "id": localTeam.length,
+        "teamFullName":$("#inp1").val() ,
+        "sName": shortName,
+
+        "teamIcon": $("#inp3").val(),
+        "WonCount": $("#inp4").val(),
+
+
+    }
+
+   localTeam.push(addData);
+   localStorage.setItem("teamArray", JSON.stringify(localTeam)); 
+
+   location.href = `./teams.html?name=${addData.sName}`;
+})
+
+addteam.js--end

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IPL Project</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/6f5013579e.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- Header Section start -->
+    <header>
+      <div id="head-container">
+        <div id="head-right">
+          
+          <img src="./img/IPL- Logo-PNG.png" alt="logo" id="logo" />
+          <a href="index.html">
+            <img src="img/home_icon.png" id="home-button" class="add-button">
+          </a>
+        </div>
+        <div id="head-left">
+          <div class="search-input">
+            <a href="" target="_blank" hidden></a>
+            <input type="text" placeholder="Enter team code" />
+            <div class="autocom-box"></div>
+            <div class="icon"><i class="fas fa-search"></i></div>
+          </div>
+          <button
+            id="add-team-button"
+            class="add-button"
+            onclick="addteamclicked()"
+          >
+            Add Team
+          </button>
+          <button
+            id="add-player-button"
+            class="add-button"
+            onclick="addPlayerClicked()"
+          >
+            Add Player
+          </button>
+ 
+        </div>
+      </div>
+    </header>
+
+    <div class="slider">
+      <div class="slides">
+        <input type="radio" name="radio-btn" id="radio1" />
+        <input type="radio" name="radio-btn" id="radio2" />
+        <input type="radio" name="radio-btn" id="radio3" />
+        <input type="radio" name="radio-btn" id="radio4" />
+
+        <div class="slide">
+          <img src="https://s01.sgp1.cdn.digitaloceanspaces.com/article/170054-tlvnvtqkqm-1644756521.jpg" alt="" />
+        </div>
+        <div class="slide first">
+          <img src="https://static.toiimg.com/photo/msid-90417002/90417002.jpg" alt="" />
+        </div>
+        <div class="slide">
+          <img src="https://newsroom.gy/wp-content/uploads/2018/05/SRH.jpg" alt="" />
+        </div>
+        <div class="slide">
+          <img src="https://cdn.sportslumo.com/wp-content/uploads/2021/04/18170013/RCB-1.jpg" alt="" />
+        </div>
+      </div>
+
+      <div class="navigation-manual">
+        <label for="radio1" class="manual-btn"></label>
+        <label for="radio2" class="manual-btn"></label>
+        <label for="radio3" class="manual-btn"></label>
+        <label for="radio4" class="manual-btn"></label>
+      </div>
+    </div>
+
+    <h1 id="slogan">Indian Premier League 2023</h1>
+
+    <div id="first-main">
+      
+      <div id="container_teams"><span style="font-weight: bold; font-size: 48px;">IPL</span>The IPL is a competitive league, with teams competing for trophies and rankings. Each team has a roster of players that it can call upon during the tournament. The IPL is also known for its spectacular matches and high-quality entertainment. The IPL offers a variety of different spectator experiences, from live matches at stadiums to live streaming services that allow fans to watch games anywhere in the world.
+  
+<br/><br/> <span style="font-weight: bold; font-size: 24px; color: rgb(112, 80, 182);"> Mumbai Indians (MI)</span>  Mumbai, the land of a myriad dreams is a melting pot and the Mumbai Indians unit does its best to showcase the same. One of the costliest teams in the IPL, they are owned by Mukesh Ambani's Reliance Industries Limited. Sachin Tendulkar has to be the most iconic figure to play for them. In the initial years, the team possessed solid hitters like Aiden Blizzard, Ambati Rayudu and Rohit Sharma combined with a host of exciting all-rounders like Kieron Pollard, James Franklin, etc and arguably the world's best T20 bowler in Lasith Malinga.
+
+<br/><br/> <span style="font-weight: bold; font-size: 24px; color: rgb(44, 47, 27);">  Chennai Super Kings (CSK)</span>  Owned by The India Cements Ltd., Chennai Super Kings have been the most dominating team in the IPL since its inception in 2008. The team's name draws inspiration from the rich tradition of the golden Tamil era that boasted of many great, fearless rulers. The franchise seems to have stuck to its cultural background and have exhibited their talent on the cricketing field as well.
+
+<br/><br/> <span style="font-weight: bold; font-size: 24px; color: red;">  Royal Challengers Bangalore (RCB)</span> Bangalore are a famous franchise in the Indian T20 League that was founded in 2008 by United Spirits and named after the company's liquor brand Royal Challenge. Since its inception, the team has played its home matches at the M. Chinnaswamy Stadium. Notably, they have never won the Indian T20 League but finished runners-up on three occasions between 2009 and 2016. Their lack of success over the years despite the presence of various marquee players has earned them the tag of 'underachievers'. 
+
+<br/><br/> <span style="font-weight: bold; font-size: 24px; color: rgb(136, 170, 244)(0, 81, 255);">  Kolkata Knight Riders (KKR)</span>  Owned by Bollywood actors, Shah Rukh Khan, Juhi Chawla and Jai Mehta, Kolkata were on the receiving end for the first three editions of the Indian T20 League. But in 2011, with a new captain in Gautam Gambhir, the side got the best out of its experienced batting line-up. Pacers like Brett Lee provided the perfect bowling stability needed along with a good spin attack in the form of Iqbal Abdulla and Shakib Al Hasan. All-rounders like Yusuf Pathan and Jacques Kallis, with their mammoth experience, gave the team a strong balance.
+
+<br/><br/> <span style="font-weight: bold; font-size: 24px; color: red;"> Delhi Capitals (DC)</span>  Being the capital city of India, it was expected that Delhi would be one of the most successful teams in the Indian T20 League. They have failed to live up to that billing and right now are under immense pressure to step up with the goods. Delhi was one of the eight founding teams of the Indian T20 League. They are owned jointly by the GMR and JSW groups in India. The Delhi-based franchise as of 2020 is being led by youngster Shreyas Iyer who is making a name for himself in the international arena as well. They have one of the best mentors in the form of Ricky Ponting and with his winning mentality, Delhi would be looking to claim their maiden Indian T20 League title.
+
+<br/><br/> <span style="font-weight: bold; font-size: 24px; color: red;"> Gujarat Titans</span>  Gujarat is a franchise cricket team based in Ahmedabad, that will play in the Indian T20 League for the first time starting in the 2022 season. Founded in 2021, the team will play its home matches at the Narendra Modi Stadium in Motera. The franchise is owned
+by CVC Capital Partners. 
+
+<br/><br/> <span style="font-weight: bold; font-size: 24px; color: red;">  Rajasthan Royals (RR)</span>  The Rajasthan franchise began its Indian T20 League journey on a high note, as they clinched the inaugural edition in 2008. Skipper Shane Warne led them successfully, performing the dual role of both, captain as well as coach. The following seasons were comparatively less fruitful, as the team tried to emulate its success in 2008 but repeatedly failed in its attempts. Shane Warne then bid adieu to professional cricket in 2011, playing his last game in the fourth season.
+
+<br/><br/> <span style="font-weight: bold; font-size: 24px; color: red;">Sunrisers Hyderabad (SHR)</span>  Sunrisers Hyderabad is the new name for the franchise from Hyderabad after the previous franchise called Deccan Chargers was terminated in 2012. They are owned by Kalanithi Maran of the Sun TV Network. The line-up remained similar to what was there for the Chargers. However, there was a change in the coaching staff with Tom Moody heading the job while VVS Laxman assuming the role of a mentor.<br/><br/><br/></div>
+    </div>
+    
+
+    <footer>
+      <div class="footer-content">
+        <ul>
+            <li><h3>Teams</h3></li>
+            <li><a href="#">Mumbai Indians</a></li>
+            <li><a href="#">Chennai Super Kings</a></li>
+            <li><a href="#">Royal Challengers Bangalore</a></li>
+            <li><a href="#">Kolkata Knight Riders</a></li>
+            <li><a href="#">+ Many More</a></li>
+        </ul>
+        <ul>
+            <li><h3>About</h3></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Anti Corruption Policy</a></li>
+            <li><a href="#">Anti Doping Policy</a></li>
+            <li><a href="#">Code Of Conduct For Players And Teams Officials</a></li>
+        </ul>
+        <ul> 
+            <li><h3>Contact</h3></li>
+            <li>Contact</li>
+            <li>Sponsorship</li>
+            <li>Privacy Policy</li>
+        </ul>
+      </div>
+      <div id="owner">
+        <p>&copy; <I>Webpage designed by</I> Lankapalli Sudheer</p>
+      </div>
+  </footer>
+    <script src="./script.js"></script>
+  </body>
+</html>
